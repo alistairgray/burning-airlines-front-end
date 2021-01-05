@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Reservations from './components/Reservations';
+import Search from './components/Search';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Reservations />
+    <Search />
   </React.StrictMode>,
   document.getElementById('root')
 );
