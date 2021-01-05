@@ -19,7 +19,32 @@ class Search extends React.Component {
     state = {
         origin: '',
         destination: '',
-        
+        flights: [
+          {
+            id: '1',
+            date: '3/1/13',
+            flight: '23',
+            from: 'JFK',
+            to: 'SFO',
+            plane: '757'
+          },
+          {
+            id: '2',
+            date: '3/3/13',
+            flight: '412',
+            from: 'JFK',
+            to: 'SFO',
+            plane: '747'
+          },
+          {
+            id: '3',
+            date: '3/8/13',
+            flight: '09',
+            from: 'JFK',
+            to: 'SFO',
+            plane: '757'
+          }
+        ]
     };
 
     handleChangeOrigin = (ev) => {
@@ -47,35 +72,34 @@ class Search extends React.Component {
             <h1>Burning Airlines</h1>
             <h3>Check out our 'parachute only arrival' specials!</h3>
 
-            <form onSubmit={this.handleSubmit}>  
+            <form onSubmit={this.handleSubmit}>
 
-                <input type="text" 
-                placeholder="origin" 
+                <input type="text"
+                placeholder="origin"
                 onChange={this.handleChangeOrigin}/>
 
-                <input type="text" 
-                placeholder="destination" 
+                <input type="text"
+                placeholder="destination"
                 onChange={this.handleChangeDestination}/>
 
                 <button>Search</button>
 
             </form>
 
-                <h3>Selected Origin</h3>
-                <ul>
-                    {
-                    this.state.origin
-                    }
-                </ul>
+            { `origin: ${this.state.origin}, dest: ${this.state.destination}`}
 
-                <hr />
-
-                <h3>Selected Destination</h3>
-                <ul>
-                    {
-                    this.state.destination
-                    }
-                </ul>
+            {
+              this.state.flights.map( flight =>
+                <li key={ flight.id }>
+                  <span>{ flight.date }</span>
+                  <span>{ flight.flight }</span>
+                  <span>{ flight.from }</span>
+                  <span>></span>
+                  <span>{ flight.to }</span>
+                  <span>{ flight.plane }</span>
+                </li>
+              )
+            }
 
             </div>
         ) // return
