@@ -7,8 +7,8 @@ import axios from 'axios';
 import SearchResults from './SearchResults'
 
 /* AXIOS */
-// const BASE_URL = ''
-// axios.get
+const BASE_URL = 'http://localhost:3001/airlines'
+
 
 
 
@@ -19,8 +19,16 @@ class Search extends React.Component {
     state = {
         origin: '',
         destination: '',
-        
+
     };
+
+    componentDidMount(){
+        axios.get(BASE_URL)
+        .then((res) => {
+            console.log('response: ', res.data);
+        })
+        .catch(console.warn)
+    }
 
     handleChangeOrigin = (ev) => {
         this.setState(
