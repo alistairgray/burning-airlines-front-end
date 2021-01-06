@@ -4,17 +4,10 @@ import '../App.css';
 import axios from 'axios';
 import {Route, Link, HashRouter as Router} from 'react-router-dom';
 
-/* CHILDREN OF SEARCH.JS */
-// import SearchResults from './SearchResults';
-import Flights from './Flights';
-import Airplanes from './Airplanes';
-
-
 /* AXIOS */
 const BASE_URL = 'http://localhost:3001/airlines';
 
-
-/* ----- PARENT COMPONENT ----- */
+/* ----- CHILD COMPONENT OF BURNING.JS ----- */
 
 class Search extends React.Component {
 
@@ -49,13 +42,14 @@ class Search extends React.Component {
         ]
     };
 
-    componentDidMount(){
-        axios.get(BASE_URL)
-        .then((res) => {
-            console.log('response: ', res.data);
-        })
-        .catch(console.warn)
-    }
+    // componentDidMount(){
+    //     axios.get(BASE_URL)
+    //     .then((res) => {
+    //         console.log('response: ', res.data);
+    //         
+    //     })
+    //     .catch(console.warn)
+    // }
 
     handleChangeOrigin = (ev) => {
         this.setState(
@@ -79,15 +73,6 @@ class Search extends React.Component {
         return(
             <div>
 
-            <h1>Burning Airlines</h1>
-            <h3>Check out our 'parachute only arrival' specials!</h3>
-            <Router>
-                <nav>
-                    <Link to="/">search</Link>  |
-                    <Link to="/flights">flights</Link>  |
-                    <Link to="/airplanes">airplanes</Link>  |
-                </nav>
-                <hr />
             <form onSubmit={this.handleSubmit}>
 
                 <input type="text"
@@ -101,34 +86,25 @@ class Search extends React.Component {
                 <button>Search</button>
 
             </form>
-
-            {/* ----- ROUTES ----- */}
-            <Route exact path="/" component={Search} />
-            <Route exact path="/flights" component={Flights} />
-            <Route exact path="/airplanes" component={Airplanes} />
-
+      
 
             { `origin: ${this.state.origin}, dest: ${this.state.destination}`}
 
             {
               this.state.flights.map( flight =>
                 <li key={ flight.id }>
-                  <span>{ flight.date }</span>
-                  <span>{ flight.flight }</span>
-                  <span>{ flight.from }</span>
+                  <span><p>date</p>{ flight.date }</span>
+                  <span><Link to=`/flight/{flight.id}`>flight #:{ flight.flight }</Link></span>
+                  <br />
+                  <span><p>Origin: </p>{ flight.from }</span>
+                  <br />
                   <span></span>
-                  <span>{ flight.to }</span>
-                  <span>{ flight.plane }</span>
+                  <span><p>Destination: </p>{ flight.to }</span>
+                  <br />
+                  <span><p>Plane Type: </p>{ flight.plane }</span>
                 </li>
               )
             }
-
-            </Router>
-            <footer>
-            <hr />
-            &copy; Winging It Productions 2021
-            </footer>
-
             </div>
         ) // return
     } // render
