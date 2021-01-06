@@ -35,15 +35,15 @@ class Burning extends React.Component {
 
             <Route exact path="/search" component={Search} />
             <Route exact path="/flights" component={Flights} />
-            <Route exact path="/reservations" component={Reservations} />
-            
+            <Route exact path="/flights/:flightNumber" component={Reservations} />
+
             </Router>
             <footer>
             <hr />
             &copy; Winging It Productions 2021
             </footer>
             </div>
-            
+
         ) // return
     } // render
 } // class Burning
