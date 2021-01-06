@@ -73,8 +73,8 @@ class Search extends React.Component {
 
             </form>
 
-
-            { `origin: ${this.state.origin}, dest: ${this.state.destination}`}
+            <h4>
+            { `origin: ${this.state.origin} || dest: ${this.state.destination}`}</h4>
 
             {
               this.state.flights.map( flight =>
