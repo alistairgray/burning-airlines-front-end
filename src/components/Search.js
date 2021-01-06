@@ -58,7 +58,7 @@ class Search extends React.Component {
     render(){
         return(
             <div>
-
+            
             <form onSubmit={this.handleSubmit}>
 
                 <input type="text"
@@ -82,12 +82,12 @@ class Search extends React.Component {
                   <span><p>date</p>{ flight.scheduled }</span>
                   <span><Link to={`/flights/${flight.flight_number}`}>flight #:{ flight.flight_number }</Link></span>
                   <br />
-                  <span><p>Origin: </p>{ flight.from }</span>
+                  <span><strong><p>Origin: </p></strong>{ flight.from }</span>
                   <br />
                   <span></span>
-                  <span><p>Destination: </p>{ flight.to }</span>
+                  <span><strong><p>Destination: </p></strong>{ flight.to }</span>
                   <br />
-                  <span><p>Plane Type: </p>{ flight.plane }</span>
+                  <span><strong><p>Plane Type: </p></strong>{ flight.plane }</span>
                 </li>
               )
             }

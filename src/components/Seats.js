@@ -15,7 +15,7 @@ class Seats extends React.Component {
               onClick={ () => this.props.onSelectSeat(seat.id) }
             >
               { this.props.row }
-              { seat.col }
+              { seat.col } |
             </span>
           )
         }

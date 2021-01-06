@@ -21,7 +21,7 @@ class Burning extends React.Component {
         return(
             <div>
 
-            <h1><span className="fire">B</span><span className="burn">u</span><span className="burn">r</span><span className="fire">n</span><span className="burn">i</span><span className="fire">n</span><span className="burn">g</span>Airlines</h1>
+            <h1><span className="fire">B</span><span className="burn">u</span><span className="burn">r</span><span className="fire">n</span><span className="burn">i</span><span className="fire">n</span><span className="burn">g</span> <span className="fire">A</span><span className="burn">i</span><span className="burn">r</span><span className="fire">l</span>i<span className="burn">n</span>e<span className="fire">s</span></h1>
 
             <h3>Check out our 'parachute only arrival' specials!</h3>
             <Router>

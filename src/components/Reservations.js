@@ -33,6 +33,7 @@ class Reservations extends React.Component {
     this.setState({
       tempSelectedSeat: id
     })
+    console.log('tempselectedSeat: ',this.state.tempSelectedSeat);
   }
 
   saveReservation = ev => {
@@ -57,15 +58,23 @@ class Reservations extends React.Component {
   render(){
     return(
       <div>
+      <h4>Choose Your Seats</h4>
         <div>
           <span>
             { this.state.flight.date }
           </span>
+          -
           <span>
-            Flight { this.state.flight.name }
+            Flight { this.state.flight.flightNumber }
           </span>
+          <br />
+          {/*This will need to be changed to airplane.name*/}
           <span>
-            { this.state.flight.from } >
+            Type of Plane: {this.state.flight.airplane_id}
+          </span>
+          <br />
+          <span>
+            { this.state.flight.from } `{'>'}`
             { this.state.flight.to }
           </span>
         </div>
@@ -75,8 +84,10 @@ class Reservations extends React.Component {
             tempSelectedSeat={ this.state.tempSelectedSeat }
             onSelectSeat={ this.onSelectSeat }
           />
+          <br />
           <button>Book Reservation</button>
         </form>
+
       </div>
     )
   }
