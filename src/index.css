@@ -9,9 +9,16 @@ body {
   background-color: rgb(238, 149, 149);
 }
 
+.wrapper {
+  width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction:column;
+  justify-content:
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 a {
@@ -147,4 +154,103 @@ h1 {
   -22px -58px 50px #ec760c,
   0 -82px 80px #cd4606,
   10px -90px 80px  #973716;}
+}
+
+.seats span {
+  padding: 5px;
+  border: 1px solid grey;
+  display: inline-block;
+  margin: 3px;
+  color: #fff;
+}
+
+.seats .open {
+  background-color: olive;
+  cursor: pointer;
+}
+
+.seats .open:hover {
+  background-color: green;
+}
+.seats .closed {
+  background-color: maroon;
+}
+
+.seats .selected {
+  background-color: green;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  background-color: pink;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 50px;
+}
+
+button:hover {
+  background-color: purple;
+  color: white;
+}
+
+.reservation .details {
+  background-color: pink;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.reservation .details span {
+  display: inline-block;
+  margin: 5px;
+  font-size: 16px;
+  font-weight:600
+}
+
+nav a {
+  background-color: pink;
+  border-radius: 50px;
+  display: inline-block;
+  padding: 10px 15px;
+  text-decoration:none !important;
+}
+
+nav a:hover {
+  background-color: purple;
+  color: white;
+}
+ input {
+   padding: 10px 15px;
+   margin: 45px 5px 15px 5px;
+   border-radius: 5px;
+   border: none;
+   font-size: 16px;
+ }
+
+input:focus, button:focus {
+  outline: none;
+}
+
+.flight-list {
+  background-color: pink;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+.flight-list span {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.flight-list span > a {
+  text-decoration: none !important;
+  color: purple;
+  cursor: pointer;
+}
+
+.flight-list span > a:hover {
+  color: black;
+}
+
+footer {
+  margin-top: 50px;
 }

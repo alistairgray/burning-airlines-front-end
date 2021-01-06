@@ -20,7 +20,6 @@ class Reservations extends React.Component {
       }
     })
     .then( res => {
-      console.log(res.data);
       this.setState({
         seatMap: res.data.seat_map,
         flight: res.data.flight
@@ -28,12 +27,25 @@ class Reservations extends React.Component {
     })
   }
 
+  isSelectionValid = id => {
+    const seatMap = this.state.seatMap
+
+    for(let i = 0; i < seatMap.length; i++){
+      const [row] = Object.values(seatMap[i])
+      const closed = row.find( el => el.id === id && el.status === 'closed')
+      if (closed) return true;
+    }
+
+    return false;
+  }
+
   onSelectSeat = id => {
     console.log(id);
-    this.setState({
-      tempSelectedSeat: id
-    })
-    console.log('tempselectedSeat: ',this.state.tempSelectedSeat);
+    if(!this.isSelectionValid(id)){
+      this.setState({
+        tempSelectedSeat: id
+      })
+    }
   }
 
   saveReservation = ev => {
@@ -44,8 +56,7 @@ class Reservations extends React.Component {
       flight_id: this.state.flight.id
     })
     .then( res => {
-      console.log(res.data);
-      // this.fetchSeats()
+      // console.log(res.data);
     })
     .catch(console.warn)
   }
@@ -57,24 +68,17 @@ class Reservations extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className="reservation">
       <h4>Choose Your Seats</h4>
-        <div>
+        <div className="details">
           <span>
-            { this.state.flight.date }
+            Departs On: { this.state.flight.scheduled },
           </span>
-          -
           <span>
-            Flight { this.state.flight.flightNumber }
+            Flight Number: { this.state.flight.flight_number },
           </span>
-          <br />
-          {/*This will need to be changed to airplane.name*/}
           <span>
-            Type of Plane: {this.state.flight.airplane_id}
-          </span>
-          <br />
-          <span>
-            { this.state.flight.from } `{'>'}`
+            { this.state.flight.from } to&nbsp;
             { this.state.flight.to }
           </span>
         </div>

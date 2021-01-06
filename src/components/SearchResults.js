@@ -1,6 +1,6 @@
 /* DEPENDENCIES */
 import React from 'react';
-import '../App.css';
+
 
 /* ----- CHILD COMPONENT OF SEARCH.JS ----- */
 /* this currently doesn't do anything */

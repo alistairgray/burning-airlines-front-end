@@ -2,7 +2,7 @@
 import React from 'react';
 import '../App.css';
 import axios from 'axios';
-import {Route, Link, HashRouter as Router} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 /* AXIOS */
 const BASE_URL = 'http://localhost:3000/flights';
@@ -49,16 +49,14 @@ class Search extends React.Component {
 
     handleSubmit = (ev) => {
         ev.preventDefault();
-        // console.log('origin: ', this.state.origin);
-        // console.log('destination: ', this.state.destination);
-
         this.fetchFlights()
+        window.setInterval(this.fetchFlights, 2000)
     }
 
     render(){
         return(
             <div>
-            
+
             <form onSubmit={this.handleSubmit}>
 
                 <input type="text"
@@ -68,26 +66,29 @@ class Search extends React.Component {
                 <input type="text"
                 placeholder="destination"
                 onChange={this.handleChangeDestination}/>
-
-                <button>Search</button>
+              <div>
+                <button>Check for Available Flights</button>
+              </div>
 
             </form>
 
-            <h4>
-            { `origin: ${this.state.origin} || dest: ${this.state.destination}`}</h4>
-
             {
               this.state.flights.map( flight =>
-                <li key={ flight.id }>
-                  <span><p>date</p>{ flight.scheduled }</span>
-                  <span><Link to={`/flights/${flight.flight_number}`}>flight #:{ flight.flight_number }</Link></span>
-                  <br />
-                  <span><strong><p>Origin: </p></strong>{ flight.from }</span>
-                  <br />
-                  <span></span>
-                  <span><strong><p>Destination: </p></strong>{ flight.to }</span>
-                  <br />
-                  <span><strong><p>Plane Type: </p></strong>{ flight.plane }</span>
+                <li className="flight-list" key={ flight.id }>
+                  <span>
+                    Date: { flight.scheduled }
+                  </span> |
+                  <span>
+                    <Link to={`/flights/${flight.flight_number}`}>
+                      flight #: { flight.flight_number }
+                    </Link>
+                  </span> |
+                  <span>
+                    { flight.from } to { flight.to }
+                  </span> |
+                  <span>
+                    Plane: { flight.airplane_name }
+                  </span>
                 </li>
               )
             }
