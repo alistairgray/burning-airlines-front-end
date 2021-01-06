@@ -5,7 +5,7 @@ import axios from 'axios';
 import {Route, Link, HashRouter as Router} from 'react-router-dom';
 
 /* AXIOS */
-const BASE_URL = 'http://localhost:3001/airlines';
+const BASE_URL = 'http://localhost:3000/flights';
 
 /* ----- CHILD COMPONENT OF BURNING.JS ----- */
 
@@ -42,14 +42,19 @@ class Search extends React.Component {
         ]
     };
 
-    // componentDidMount(){
-    //     axios.get(BASE_URL)
-    //     .then((res) => {
-    //         console.log('response: ', res.data);
-    //         
-    //     })
-    //     .catch(console.warn)
-    // }
+    fetchFlights = () => {
+        axios.get(BASE_URL, {
+          params: {
+            from: this.state.origin,
+            to: this.state.destination
+          }
+        })
+        .then((res) => {
+            console.log('response: ', res.data);
+
+        })
+        .catch(console.warn)
+    }
 
     handleChangeOrigin = (ev) => {
         this.setState(
@@ -65,8 +70,10 @@ class Search extends React.Component {
 
     handleSubmit = (ev) => {
         ev.preventDefault();
-        console.log('origin: ', this.state.origin);
-        console.log('destination: ', this.state.destination);
+        // console.log('origin: ', this.state.origin);
+        // console.log('destination: ', this.state.destination);
+
+        this.fetchFlights()
     }
 
     render(){
@@ -86,7 +93,7 @@ class Search extends React.Component {
                 <button>Search</button>
 
             </form>
-      
+
 
             { `origin: ${this.state.origin}, dest: ${this.state.destination}`}
 
@@ -94,7 +101,7 @@ class Search extends React.Component {
               this.state.flights.map( flight =>
                 <li key={ flight.id }>
                   <span><p>date</p>{ flight.date }</span>
-                  <span><Link to=`/flight/{flight.id}`>flight #:{ flight.flight }</Link></span>
+                  <span><Link to={`/flight/${flight.id}`}>flight #:{ flight.flight }</Link></span>
                   <br />
                   <span><p>Origin: </p>{ flight.from }</span>
                   <br />
@@ -113,5 +120,3 @@ class Search extends React.Component {
 export default Search;
 
 /* BACKLOG */
-
-
