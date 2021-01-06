@@ -2,14 +2,16 @@
 import React from 'react';
 import '../App.css';
 import axios from 'axios';
+import {Route, Link, HashRouter as Router} from 'react-router-dom';
 
 /* CHILDREN OF SEARCH.JS */
-import SearchResults from './SearchResults'
+// import SearchResults from './SearchResults';
+import Flights from './Flights';
+import Airplanes from './Airplanes';
+
 
 /* AXIOS */
-const BASE_URL = 'http://localhost:3001/airlines'
-
-
+const BASE_URL = 'http://localhost:3001/airlines';
 
 
 /* ----- PARENT COMPONENT ----- */
@@ -19,7 +21,32 @@ class Search extends React.Component {
     state = {
         origin: '',
         destination: '',
-
+        flights: [
+          {
+            id: '1',
+            date: '3/1/13',
+            flight: '23',
+            from: 'JFK',
+            to: 'SFO',
+            plane: '757'
+          },
+          {
+            id: '2',
+            date: '3/3/13',
+            flight: '412',
+            from: 'JFK',
+            to: 'SFO',
+            plane: '747'
+          },
+          {
+            id: '3',
+            date: '3/8/13',
+            flight: '09',
+            from: 'JFK',
+            to: 'SFO',
+            plane: '757'
+          }
+        ]
     };
 
     componentDidMount(){
@@ -54,36 +81,53 @@ class Search extends React.Component {
 
             <h1>Burning Airlines</h1>
             <h3>Check out our 'parachute only arrival' specials!</h3>
+            <Router>
+                <nav>
+                    <Link to="/">search</Link>  |
+                    <Link to="/flights">flights</Link>  |
+                    <Link to="/airplanes">airplanes</Link>  |
+                </nav>
+                <hr />
+            <form onSubmit={this.handleSubmit}>
 
-            <form onSubmit={this.handleSubmit}>  
-
-                <input type="text" 
-                placeholder="origin" 
+                <input type="text"
+                placeholder="origin"
                 onChange={this.handleChangeOrigin}/>
 
-                <input type="text" 
-                placeholder="destination" 
+                <input type="text"
+                placeholder="destination"
                 onChange={this.handleChangeDestination}/>
 
                 <button>Search</button>
 
             </form>
 
-                <h3>Selected Origin</h3>
-                <ul>
-                    {
-                    this.state.origin
-                    }
-                </ul>
+            {/* ----- ROUTES ----- */}
+            <Route exact path="/" component={Search} />
+            <Route exact path="/flights" component={Flights} />
+            <Route exact path="/airplanes" component={Airplanes} />
 
-                <hr />
 
-                <h3>Selected Destination</h3>
-                <ul>
-                    {
-                    this.state.destination
-                    }
-                </ul>
+            { `origin: ${this.state.origin}, dest: ${this.state.destination}`}
+
+            {
+              this.state.flights.map( flight =>
+                <li key={ flight.id }>
+                  <span>{ flight.date }</span>
+                  <span>{ flight.flight }</span>
+                  <span>{ flight.from }</span>
+                  <span></span>
+                  <span>{ flight.to }</span>
+                  <span>{ flight.plane }</span>
+                </li>
+              )
+            }
+
+            </Router>
+            <footer>
+            <hr />
+            &copy; Winging It Productions 2021
+            </footer>
 
             </div>
         ) // return
@@ -94,24 +138,4 @@ export default Search;
 
 /* BACKLOG */
 
-/* OPTION SELECT */
 
-{/* <label>From
-                <br />
-                <select>
-                    <option value="Select One"</option>
-                    <option value="Melbourne"</option>
-                    <option value="Sydney"</option>
-                    <option value="Brisbane"</option>
-                </select>
-                </label>
-
-                <label>To
-                <br />
-                <select>
-                    <option value="Select One"</option>
-                    <option value="Melbourne"</option>
-                    <option value="Sydney"</option>
-                    <option value="Brisbane"</option>
-                </select>
-                </label> */}
