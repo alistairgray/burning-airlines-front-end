@@ -43,7 +43,15 @@ h1 {
   white-space:nowrap;
 }
 
+.seat {
+  cursor: pointer;
+}
 
+.seat:hover {
+  text-decoration: underline;
+  font-weight: bold;
+  color: gold;
+}
 
 
 /* span  {

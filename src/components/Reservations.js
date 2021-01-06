@@ -36,12 +36,13 @@ class Reservations extends React.Component {
       date: '3/11/13',
       flightNumber: '09',
       from: 'JFK',
-      to: 'SFO'
+      to: 'SFO',
+      airplane_id: '5'
     }
   }
 
   fetchSeats = () => {
-    axios.get(URL, {
+    axios.get(BASE_URL, {
       params: {
         flight: this.props.match.params.flightNumber
       }
@@ -59,35 +60,45 @@ class Reservations extends React.Component {
     this.setState({
       tempSelectedSeat: id
     })
+    console.log('tempselectedSeat: ',this.state.tempSelectedSeat);
   }
 
   saveReservation = ev => {
     ev.preventDefault()
-    axios.post(URL, {
+    axios.post(BASE_URL, {
       params: {
         id: this.state.tempSelectedSeat,
         userId: 'sadsad',
-        flight: this.state.flight.name
+        flight: this.state.flight.flightNumber
       }
     })
+    console.log('saved tempSelectedSeat: ', this.state.tempSelectedSeat)
   }
 
   componentDidMount(){
-    fetchSeats()
+    this.fetchSeats();
   }
 
   render(){
     return(
       <div>
+      <h4>Choose Your Seats</h4>
         <div>
           <span>
             { this.state.flight.date }
           </span>
+          -
           <span>
-            Flight { this.state.flight.name }
+            Flight { this.state.flight.flightNumber }
           </span>
+          <br />
+          {/*This will need to be changed to airplane.name*/}
           <span>
-            { this.state.flight.from } >
+            Type of Plane: {this.state.flight.airplane_id}
+          </span>
+          <br />
+          <span>
+            { this.state.flight.from } `{'>'}`
             { this.state.flight.to }
           </span>
         </div>
@@ -97,8 +108,10 @@ class Reservations extends React.Component {
             tempSelectedSeat={ this.state.tempSelectedSeat }
             onSelectSeat={ this.onSelectSeat }
           />
+          <br />
           <button>Book Reservation</button>
         </form>
+
       </div>
     )
   }

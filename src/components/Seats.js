@@ -11,11 +11,11 @@ class Seats extends React.Component {
           this.props.seats.map( seat =>
             <span
               key={ seat.id }
-              className={ `${seat.status} ${tempSeat}` }
+              className={ `seat ${seat.status} ${tempSeat}` }
               onClick={ () => this.props.onSelectSeat(seat.id) }
             >
               { this.props.row }
-              { seat.col }
+              { seat.col } |
             </span>
           )
         }

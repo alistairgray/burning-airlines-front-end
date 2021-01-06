@@ -21,7 +21,7 @@ class Burning extends React.Component {
         return(
             <div>
 
-            <h1><span class="fire">B</span><span class="burn">u</span><span class="burn">r</span><span class="fire">n</span><span class="burn">i</span><span class="fire">n</span><span class="burn">g</span> <span class="fire">A</span><span class="burn">i</span><span class="burn">r</span><span class="fire">l</span>i<span class="burn">n</span>e<span class="fire">s</span></h1>
+            <h1><span className="fire">B</span><span className="burn">u</span><span className="burn">r</span><span className="fire">n</span><span className="burn">i</span><span className="fire">n</span><span className="burn">g</span> <span className="fire">A</span><span className="burn">i</span><span className="burn">r</span><span className="fire">l</span>i<span className="burn">n</span>e<span className="fire">s</span></h1>
 
             <h3>Check out our 'parachute only arrival' specials!</h3>
             <Router>
@@ -37,6 +37,7 @@ class Burning extends React.Component {
             <Route exact path="/search" component={Search} />
             <Route exact path="/flights" component={Flights} />
             <Route exact path="/flights/:flightNumber" component={Reservations} />
+            <Route exact path="/reservations" component={Reservations} />
 
             </Router>
             <footer>
