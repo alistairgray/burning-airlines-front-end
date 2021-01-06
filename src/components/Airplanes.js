@@ -2,7 +2,7 @@
 import React from 'react';
 import '../App.css';
 
-/* ----- CHILD COMPONENT OF SEARCH.JS ----- */
+/* ----- CHILD COMPONENT OF BURNING.JS ----- */
 
 class Airplanes extends React.Component {
     render(){
