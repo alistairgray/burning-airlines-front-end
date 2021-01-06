@@ -2,6 +2,9 @@ import React from 'react';
 import SeatMap from './SeatMap';
 import axios from 'axios'
 
+const BASE_URL = 'http://localhost:3000/reservations';
+
+
 class Reservations extends React.Component {
 
   state = {
@@ -31,7 +34,7 @@ class Reservations extends React.Component {
     ],
     flight: {
       date: '3/11/13',
-      name: '09',
+      flightNumber: '09',
       from: 'JFK',
       to: 'SFO'
     }
@@ -40,7 +43,7 @@ class Reservations extends React.Component {
   fetchSeats = () => {
     axios.get(URL, {
       params: {
-        flight: this.props.params.flight
+        flight: this.props.match.params.flightNumber
       }
     })
     .then( res => {
@@ -69,9 +72,9 @@ class Reservations extends React.Component {
     })
   }
 
-  // componentDidMount(){
-  //   fetchSeats()
-  // }
+  componentDidMount(){
+    fetchSeats()
+  }
 
   render(){
     return(

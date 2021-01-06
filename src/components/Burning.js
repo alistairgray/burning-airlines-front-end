@@ -36,8 +36,7 @@ class Burning extends React.Component {
 
             <Route exact path="/search" component={Search} />
             <Route exact path="/flights" component={Flights} />
-            <Route exact path="/reservations" component={Reservations} />
-            <Route exact path="/flights/:id" />
+            <Route exact path="/flights/:flightNumber" component={Reservations} />
 
             </Router>
             <footer>
@@ -45,7 +44,7 @@ class Burning extends React.Component {
             &copy; Winging It Productions 2021 - <em>For legal disputes or claims, please contact Scotty from Marketing</em>
             </footer>
             </div>
-            
+
         ) // return
     } // render
 } // class Burning
