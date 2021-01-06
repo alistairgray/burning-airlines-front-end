@@ -80,7 +80,7 @@ class Search extends React.Component {
               this.state.flights.map( flight =>
                 <li key={ flight.id }>
                   <span><p>date</p>{ flight.scheduled }</span>
-                  <span><Link to={`/flights/${flight.flight}`}>flight #:{ flight.flight }</Link></span>
+                  <span><Link to={`/flights/${flight.flight_number}`}>flight #:{ flight.flight_number }</Link></span>
                   <br />
                   <span><p>Origin: </p>{ flight.from }</span>
                   <br />

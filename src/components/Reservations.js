@@ -9,46 +9,20 @@ class Reservations extends React.Component {
 
   state = {
     tempSelectedSeat: null,
-    seatMap: [
-      {'21':
-        [
-          {id:'00', col:'A', status: 'open'},
-          {id:'01', col:'B', status: 'closed'},
-          {id:'02',col:'C', status: 'closed'}
-        ]
-      },
-      {'22':
-        [
-          {id:'10', col:'A', status: 'open'},
-          {id:'11',col:'B', status: 'closed'},
-          {id:'12',col:'C', status: 'open'}
-        ]
-      },
-      {'23':
-        [
-          {id:'20', col:'A', status: 'closed'},
-          {id:'21', col:'B', status: 'closed'},
-          {id:'22', col:'C', status: 'closed'}
-        ]
-      }
-    ],
-    flight: {
-      date: '3/11/13',
-      flightNumber: '09',
-      from: 'JFK',
-      to: 'SFO'
-    }
+    seatMap: [],
+    flight: {}
   }
 
   fetchSeats = () => {
-    axios.get(URL, {
+    axios.get(BASE_URL, {
       params: {
-        flight: this.props.match.params.flightNumber
+        flight_number: this.props.match.params.flight_number
       }
     })
     .then( res => {
+      console.log(res.data);
       this.setState({
-        seatMap: res.data.seatMap,
+        seatMap: res.data.seat_map,
         flight: res.data.flight
       })
     })
@@ -63,17 +37,21 @@ class Reservations extends React.Component {
 
   saveReservation = ev => {
     ev.preventDefault()
-    axios.post(URL, {
-      params: {
-        id: this.state.tempSelectedSeat,
-        userId: 'sadsad',
-        flight: this.state.flight.name
-      }
+    axios.post(BASE_URL, {
+      seat_id: this.state.tempSelectedSeat,
+      user_id: 2,
+      flight_id: this.state.flight.id
     })
+    .then( res => {
+      console.log(res.data);
+      // this.fetchSeats()
+    })
+    .catch(console.warn)
   }
 
   componentDidMount(){
-    fetchSeats()
+    this.fetchSeats()
+    window.setInterval( this.fetchSeats, 2000)
   }
 
   render(){

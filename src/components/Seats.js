@@ -11,7 +11,7 @@ class Seats extends React.Component {
           this.props.seats.map( seat =>
             <span
               key={ seat.id }
-              className={ `${seat.status} ${tempSeat}` }
+              className={ `${seat.status} ${tempSeat === seat.id && 'selected'}` }
               onClick={ () => this.props.onSelectSeat(seat.id) }
             >
               { this.props.row }
