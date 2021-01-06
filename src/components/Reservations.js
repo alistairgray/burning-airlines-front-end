@@ -72,10 +72,16 @@ class Reservations extends React.Component {
       <h4>Choose Your Seats</h4>
         <div className="details">
           <span>
-            Departs On: { this.state.flight.scheduled },
+            Departs On:&nbsp;
+            <strong>
+              { this.state.flight.scheduled },
+            </strong>
           </span>
           <span>
-            Flight Number: { this.state.flight.flight_number },
+            Flight Number:&nbsp;
+            <strong>
+              { this.state.flight.flight_number },
+            </strong>
           </span>
           <span>
             { this.state.flight.from } to&nbsp;
