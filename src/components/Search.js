@@ -50,13 +50,14 @@ class Search extends React.Component {
     handleSubmit = (ev) => {
         ev.preventDefault();
         this.fetchFlights()
-        window.setInterval(this.fetchFlights, 2000)
+        // window.setInterval(this.fetchFlights, 2000)
     }
 
     render(){
         return(
             <div>
-
+            {/* <hr /> */}
+            {/* <h4>Manually search flights</h4>
             <form onSubmit={this.handleSubmit}>
 
                 <input type="text"
@@ -68,8 +69,34 @@ class Search extends React.Component {
                 onChange={this.handleChangeDestination}/>
               <div>
                 <button>Check for Available Flights</button>
-              </div>
+              </div> */}
 
+            {/* </form> */}
+            <br />
+            <hr />
+            <br />
+            <h4>Choose from a list below</h4>
+            <form onSubmit={this.handleSubmit}>
+            <label className="dropDown">Origin</label>
+                <select value={this.state.origin} onChange={this.handleChangeOrigin}>
+                  <option value="Select">Select</option>
+                  <option value="Perth">Perth</option>
+                  <option value="Sydney">Sydney</option>
+                  <option value="Melbourne">Melbourne</option>
+                </select>
+            <span></span>   
+            <label className="dropDown">Destination</label>
+                <select value={this.state.destination} onChange={this.handleChangeDestination}>
+                  <option value="Select">Select</option>
+                  <option value="Perth">Perth</option>
+                  <option value="Sydney">Sydney</option>
+                  <option value="Melbourne">Melbourne</option>
+                </select>
+              <br />
+              <br />
+              <div>
+                <button>Check for Available Flights</button>
+              </div>
             </form>
 
             {

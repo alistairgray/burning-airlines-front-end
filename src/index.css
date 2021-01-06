@@ -60,16 +60,6 @@ h1 {
   color: gold;
 }
 
-
-/* span  {
-  color: #000;
-  font-family: 'Caesar Dressing', cursive;
-  font-size: 5em;
-  text-transform: lowercase;
-  vertical-align: middle;
-  letter-spacing: .2em;
-} */
-
 .fire {
   animation: animation 1s ease-in-out infinite alternate;
   -moz-animation: animation 1s ease-in-out infinite alternate;
@@ -218,12 +208,16 @@ nav a:hover {
   background-color: purple;
   color: white;
 }
- input {
+ input, select, .dropDown {
    padding: 10px 15px;
    margin: 45px 5px 15px 5px;
    border-radius: 5px;
    border: none;
    font-size: 16px;
+ }
+
+ .dropDown {
+   background-color: #fff;
  }
 
 input:focus, button:focus {
@@ -253,4 +247,8 @@ input:focus, button:focus {
 
 footer {
   margin-top: 50px;
+}
+
+h4 {
+  margin-bottom: 0;
 }

@@ -21,7 +21,7 @@ class Burning extends React.Component {
                 <nav>
                   <Link to="/search">Search Flights</Link>
                 </nav>
-                <hr />
+                {/* <hr /> */}
 
             <Route exact path="/search" component={Search} />
             <Route exact path="/flights/:flight_number" component={Reservations} />
