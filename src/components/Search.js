@@ -87,14 +87,15 @@ class Search extends React.Component {
 
             </form>
       
-
-            { `origin: ${this.state.origin}, dest: ${this.state.destination}`}
+            <h4>
+            { `origin: ${this.state.origin} || dest: ${this.state.destination}`}</h4>
 
             {
               this.state.flights.map( flight =>
                 <li key={ flight.id }>
                   <span><p>date</p>{ flight.date }</span>
-                  <span><Link to=`/flight/{flight.id}`>flight #:{ flight.flight }</Link></span>
+                  <br />
+                  <Link to={`/flight/${flight.id}`}>flight #:{ flight.flight }</Link>
                   <br />
                   <span><p>Origin: </p>{ flight.from }</span>
                   <br />

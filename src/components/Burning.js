@@ -1,6 +1,6 @@
 /* DEPENDENCIES */
 import React from 'react';
-import '../App.css';
+import '../index.css';
 import axios from 'axios';
 import {Route, Link, HashRouter as Router} from 'react-router-dom';
 
@@ -21,7 +21,8 @@ class Burning extends React.Component {
         return(
             <div>
 
-            <h1>Burning Airlines</h1>
+            <h1><span class="fire">B</span><span class="burn">u</span><span class="burn">r</span><span class="fire">n</span><span class="burn">i</span><span class="fire">n</span><span class="burn">g</span>Airlines</h1>
+
             <h3>Check out our 'parachute only arrival' specials!</h3>
             <Router>
                 <nav>
@@ -36,11 +37,12 @@ class Burning extends React.Component {
             <Route exact path="/search" component={Search} />
             <Route exact path="/flights" component={Flights} />
             <Route exact path="/reservations" component={Reservations} />
-            
+            <Route exact path="/flights/:id" />
+
             </Router>
             <footer>
             <hr />
-            &copy; Winging It Productions 2021
+            &copy; Winging It Productions 2021 - <em>For legal disputes or claims, please contact Scotty from Marketing</em>
             </footer>
             </div>
             
