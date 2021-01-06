@@ -100,16 +100,17 @@ class Search extends React.Component {
             {
               this.state.flights.map( flight =>
                 <li key={ flight.id }>
-                  <span><p>date</p>{ flight.date }</span>
+                  <span><p><strong>Date</strong></p>{ flight.date }</span>
                   <br />
-                  <Link to={`/flight/${flight.id}`}>flight #:{ flight.flight }</Link>
+                  <p><strong>Flight Number:</strong></p>
+                  <Link to={`/flight/${flight.id}`}>{ flight.flight }</Link>
                   <br />
-                  <span><p>Origin: </p>{ flight.from }</span>
+                  <span><strong><p>Origin: </p></strong>{ flight.from }</span>
                   <br />
                   <span></span>
-                  <span><p>Destination: </p>{ flight.to }</span>
+                  <span><strong><p>Destination: </p></strong>{ flight.to }</span>
                   <br />
-                  <span><p>Plane Type: </p>{ flight.plane }</span>
+                  <span><strong><p>Plane Type: </p></strong>{ flight.plane }</span>
                 </li>
               )
             }
