@@ -14,3 +14,25 @@ class SearchResults extends React.Component {
 } // class SearchResults
 
 export default SearchResults
+
+/* OPTION SELECT */
+
+{/* <label>From
+                <br />
+                <select>
+                    <option value="Select One"</option>
+                    <option value="Melbourne"</option>
+                    <option value="Sydney"</option>
+                    <option value="Brisbane"</option>
+                </select>
+                </label>
+
+                <label>To
+                <br />
+                <select>
+                    <option value="Select One"</option>
+                    <option value="Melbourne"</option>
+                    <option value="Sydney"</option>
+                    <option value="Brisbane"</option>
+                </select>
+                </label> */}
