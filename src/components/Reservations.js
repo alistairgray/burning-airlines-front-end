@@ -70,6 +70,7 @@ class Reservations extends React.Component {
     return(
       <div className="reservation">
       <h4>Choose Your Seats</h4>
+      <br />
         <div className="details">
           <span>
             Departs On:&nbsp;
